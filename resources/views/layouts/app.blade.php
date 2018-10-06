@@ -18,7 +18,7 @@
 
 	
 
-		@yield('form')
+		@yield('main')
 
 
 

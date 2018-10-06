@@ -1,5 +1,6 @@
 <?php
 use App\RegistrationController;
+use App\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -23,13 +24,13 @@ Route::post('register', 'RegistrationController@store');
 
 Route::get('/main',function()
 {
-echo "chuj";
+return view('main.main_page');
 });
 
 
 
 
 //logowanie 
-Route::get('/login', 'SessionsController@create');
-Route::post('/login', 'SessionsController@store');
-Route::get('/logout', 'SessionsController@destroy');
+Route::get('/login', 'SessionController@create');
+Route::post('login', 'SessionController@store');
+Route::get('/logout', 'SessionController@destroy');

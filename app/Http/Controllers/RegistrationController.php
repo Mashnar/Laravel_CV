@@ -36,7 +36,7 @@ $hashedPass=bcrypt($request->haslo);
    $user->PESEL = $request->PESEL;
    $user->Nazwisko = $request->Nazwisko;
    $user->e_mail = $request->e_mail;
-   $user->haslo = $hashedPass;
+   $user->password = $hashedPass;
    $user->save();
 
          auth()->login($user);//robi sesje z tymi danymi

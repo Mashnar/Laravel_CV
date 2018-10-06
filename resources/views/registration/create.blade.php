@@ -1,6 +1,6 @@
 @extends('layouts.app')    <!--bierzemy loyots , taka jakby template -->
 
- @section('form')
+ @section('main')
     <h2>Register</h2>
   
     <form method="POST" action="register">

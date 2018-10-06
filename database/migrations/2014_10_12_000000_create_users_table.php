@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
              $table->bigInteger('NIP');
              $table->string('adres');
              $table->string('e_mail')->unique();
-             $table->string('haslo');
+             $table->string('password');
              $table->string('opis_osoby');
              $table->string('zainteresowania');
              $table->string('umiejetnosci');
