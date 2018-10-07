@@ -99,6 +99,8 @@
 </table>
 
             @endif
+
+
 @stop
 
 
@@ -106,7 +108,7 @@
 
 @section('footer')
 
-
+<p><a href="{{route('edit', $user->id)}}" class="btn btn-info btn-xs" role="button">Edit your data</a> 
 
 
 @stop

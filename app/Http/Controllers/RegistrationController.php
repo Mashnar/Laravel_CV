@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 
+use Illuminate\Support\Facades\Auth;
+
 
 class RegistrationController extends Controller
 {
@@ -41,7 +43,7 @@ $hashedPass=bcrypt($request->haslo);
 
          auth()->login($user);//robi sesje z tymi danymi
          $user = User::findOrFail(Auth::user()->id);
-           return redirect()->to('/main');
+             return view("main.main_page",["user"=>$user]);
     /*
   
 

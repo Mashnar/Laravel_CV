@@ -19,13 +19,12 @@ Route::get('/', function () {
 //zajmuje sie rejestracja 
 Route::get('/register', 'RegistrationController@create');
 Route::post('register', 'RegistrationController@store');
+Route::get('/edit/{id}','CRUD@edit')->name('edit');
+Route::post('update','CRUD@update')->name('update');
 
 
 
-Route::get('/main',function()
-{
-return view('main.main_page');
-});
+
 
 
 
