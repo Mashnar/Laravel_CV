@@ -40,6 +40,7 @@ $hashedPass=bcrypt($request->haslo);
    $user->save();
 
          auth()->login($user);//robi sesje z tymi danymi
+         $user = User::findOrFail(Auth::user()->id);
            return redirect()->to('/main');
     /*
   

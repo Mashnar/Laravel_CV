@@ -20,17 +20,27 @@ class SessionController extends Controller
 
      public function store(Request $request)
     {
+
+
+
+
     	 $credentials = [
         'e_mail' =>$request['e_mail'],
-        'password' => $request['haslo'],
+        'password' => $request['password'],
     ];
 
-   var_dump($credentials);
+  // var_dump($credentials);
        
     if (Auth::attempt($credentials)) {
+/*
 
-$test='chuj';
       return view("main.main_page",["test"=>$test]);
+      */
+
+      $user = User::findOrFail(Auth::user()->id);
+
+     // var_dump($user);
+      return view("main.main_page",["user"=>$user]);
     }
         
         return 'Failure';
