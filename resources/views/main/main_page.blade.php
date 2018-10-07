@@ -33,13 +33,65 @@
        <td>{{$user->Nazwisko}}</td>
         <td>{{$user->PESEL}}</td>
         @if($user->NIP==0)
-<td>Uzupelnij</td>
+<td></td>
 @else
 <td>{{$user->NIP}}</td>
         @endif
+        @if($user->adres==NULL)
+        <td></td>
+        @else
         <td>{{$user->adres}}</td>
 
-           
+           @endif
+           <td>{{$user->e_mail}}</td>
+
+ @if($user->opis_osoby==NULL)
+        <td></td>
+        @else
+        <td>{{$user->opis_osoby}}</td>
+        @endif
+
+
+         @if($user->zainteresowania==NULL)
+        <td></td>
+        @else
+        <td>{{$user->zainteresowania}}</td>
+        @endif
+
+         @if($user->umiejetnosci==NULL)
+        <td></td>
+        @else
+        <td>{{$user->umiejetnosci}}</td>
+        @endif
+
+
+  @if($user->Doswiadczenie==NULL)
+        <td></td>
+        @else
+        <td>{{$user->Doswiadczenie}}</td>
+        @endif
+
+
+         @if($user->data_ur==0)
+        <td></td>
+        @else
+        <td>{{$user->data_ur}}</td>
+        @endif
+
+ @if($user->ocena==NULL)
+        <td></td>
+        @else
+        <td>{{$user->ocena}}</td>
+        @endif
+
+
+ @if($user->plik==NULL)
+        <td></td>
+        @else
+        <td>{{$user->plik}}</td>
+        @endif
+
+
    
     </tr>
    
