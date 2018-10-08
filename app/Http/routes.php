@@ -24,6 +24,7 @@ Route::post('register', 'RegistrationController@store');
 Route::get('/edit/{id}','CRUD@edit')->name('edit');
 Route::post('update','CRUD@update')->name('update');
 Route::post('delete','CRUD@delete')->name('delete');
+Route::post('download','CRUD@download')->name('download');
 
 
 

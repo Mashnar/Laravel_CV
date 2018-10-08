@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Input;
 
 class CRUD extends Controller
 {
@@ -30,18 +30,27 @@ class CRUD extends Controller
 
     public function update(Request $request)
     {
-   
+     // dd($request);
+   if(Input::hasFile('plik'))
+   {
+    $data = file_get_contents(Input::file('plik')->getRealPath());
+    $base64=base64_encode($data);
+    echo $data;
+    echo $base64;
+//var_dump($data);
+    $user =  User::where('id',$request['id'])->update(array('plik'=>$base64));
+   }
        if($request['password']==NULL)
        {
       
-       $user = User::where('id',$request['id'])->update(request()->except('_token','password','id'));
+       $user = User::where('id',$request['id'])->update(request()->except('_token','password','id','file'));
        //var_dump($password);
        }
        else
        {
         $request['password']=bcrypt($request['password']);
         
-       $user = User::where('id', $request['id'])->update(request()->except('_token','id'));
+       $user = User::where('id', $request['id'])->update(request()->except('_token','id','plik'));
         //var_dump($request['password']);
        }
 
@@ -68,5 +77,13 @@ class CRUD extends Controller
          $user_all=User::all()->except(Auth::id());
          return view("main.main_admin",["user"=>$user_all]);
 
+    }
+
+    public function download(Request $request)
+    {
+    return response()->make($request['plik'], 200, [
+            'Content-type: application/pdf',
+            'Content-Disposition: attachment; filename=file.pdf'
+        ]);
     }
 }

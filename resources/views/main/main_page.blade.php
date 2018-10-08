@@ -88,7 +88,15 @@
  @if($user->plik==NULL)
         <td></td>
         @else
-        <td>{{$user->plik}}</td>
+        <td>
+        <form action="download" method="POST">
+  {{ csrf_field() }}
+    <input type="submit" value="pobierz" class="btn btn-info btn-xs" role="button" />
+     <input type="hidden" id="plik" name="plik" value="{{$user->plik}}">
+  
+  
+</form>
+</td>
         @endif
 
 
