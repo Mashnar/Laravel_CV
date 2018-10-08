@@ -100,8 +100,15 @@
         @endif
 
 <td><p><a href="{{route('edit', $users->id)}}" class="btn btn-info btn-xs" role="button">Edytuj</a> 
-<td><p><a href="{{route('delete', $users->id)}}" class="btn btn-info btn-xs" role="button">Usun</a> 
-   
+  <td>
+<form action="delete" method="POST">
+  {{ csrf_field() }}
+    <input type="submit" value="Usuń" class="btn btn-info btn-xs" role="button" />
+     <input type="hidden" id="id" name="id" value="{{$users->id}}">
+  
+  
+</form>
+   </td>
     </tr>
 @endforeach
 

@@ -30,25 +30,7 @@ class CRUD extends Controller
 
     public function update(Request $request)
     {
-    //   $user=User::findOrFail(Auth::user()->id);
-       /*
-       $user->Imie=$request['Imie'];
-       $user->Nazwisko=$request['Nazwisko'];
-       $user->e_mail=$request['e_mail'];
-       $user->PESEL=$request['PESEL'];
-         $hashedPass=bcrypt($request['haslo']);
-       $user->password=$hashedPass;
-       $user->adres=$request['adres'];
-       $user->opis_osoby=$request['opis_osoby'];
-
-       $user->zainteresowania=$request['zainteresowania'];
-       $user->umiejetnosci=$request['umiejetnosci'];
-    
-      $user->Doswiadczenie=$request['doswiadczenie'];
-       $user->data_aktualizacji=date('Y-m-d H:i:s');\
-
-       */
-         //$user->save();
+   
        if($request['password']==NULL)
        {
       
@@ -75,18 +57,14 @@ class CRUD extends Controller
       else
         return view("main.main_page",["user"=>$user_main]);
 
-//$hashedPass= $request['password'];
-//$array = explode('', $hashedPass);
-     //  $user = User::where('id',Auth::user()->id)->update('password',$hashedPass);
-
 
 
 
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        $user=User::findOrFail($id)->delete();
+        $user=User::findOrFail($request['id'])->delete();
          $user_all=User::all()->except(Auth::id());
          return view("main.main_admin",["user"=>$user_all]);
 
