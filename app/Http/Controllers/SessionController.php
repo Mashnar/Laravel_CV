@@ -38,13 +38,18 @@ class SessionController extends Controller
       */
 
       $user = User::findOrFail(Auth::user()->id);
+      if($user->is_admin==true)
+      {
+        $user_all=User::all()->except(Auth::id());
+         return view("main.main_admin",["user"=>$user_all]);
+      }
 
      // var_dump($user);
       return view("main.main_page",["user"=>$user]);
     }
         
-        return 'Failure';
-    }
+       return redirect()->action('SessionController@create');  
+      }
 
 
 

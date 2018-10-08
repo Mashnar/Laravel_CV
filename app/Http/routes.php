@@ -1,6 +1,8 @@
 <?php
+use App\Controller;
 use App\RegistrationController;
 use App\SessionController;
+use App\CRUD;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -21,6 +23,8 @@ Route::get('/register', 'RegistrationController@create');
 Route::post('register', 'RegistrationController@store');
 Route::get('/edit/{id}','CRUD@edit')->name('edit');
 Route::post('update','CRUD@update')->name('update');
+Route::get('/delete/{id}','CRUD@delete')->name('delete');
+
 
 
 
